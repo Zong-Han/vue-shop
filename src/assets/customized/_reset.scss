@@ -1,0 +1,32 @@
+//text
+h1 {
+  font-size: $text-lg;
+}
+
+h2 {
+  font-size: $text-md;
+}
+
+h3 {
+  font-size: $text-sm;
+}
+
+//list
+ul {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+//link
+a {
+  color:$dark-blue;
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  }
+}

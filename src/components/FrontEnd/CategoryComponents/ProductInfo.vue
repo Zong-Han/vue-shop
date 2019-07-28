@@ -32,7 +32,7 @@
                           <i class="fas fa-star"></i>
                         </li>
                         <li>
-                          <i class="fas fa-star text-light"></i>
+                          <i class="fas fa-star"></i>
                         </li>
                       </ul>
                     </li>

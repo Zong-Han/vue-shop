@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <loading :active.sync="isLoading" :can-cancel="true" :is-full-page="true"></loading>
+  <div v-cloak>
+    <loading :active.sync="isLoading" :can-cancel="true" :is-full-page="true"></loading>-->
     <header>
       <navbar></navbar>
     </header>
-    <div class="main mt-5">
-      <div class="container">
-        <div class="row align-items-center pt-3 pt-lg-5">
-          <div class="col-12 col-lg-8">
+    <div class="main mt-5 pt-lg-5">
+      <div class="container ">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-10 col-lg-7 mb-3 mt-1">
             <banner></banner>
           </div>
-          <div class="col-12 col-lg-4">
-            <form class="form-signin text-dark-blue" @submit.prevent="signin">
+          <div class="col-10 col-lg-5 col-lg-4">
+            <form class="form-signin text-dark-blue shadow-sm" @submit.prevent="signin">
               <h1 class="h3 mb-3 font-weight-normal text-center">
                 會員登入
                 <i class="fas fa-user"></i>
@@ -21,24 +21,22 @@
                 name="email"
                 type="email"
                 id="inputEmail"
-                class="form-control mb-3"
-                placeholder="請輸入Email帳號"
-                autofocus
+                class="form-control mb-1 border-secondary"
+                placeholder="請輸入 Email 帳號"
                 v-model="user.username"
-                autocomplete="on"
               />
-              <span class="text-danger">{{ errors.first('email') }}</span>
+              <p class="text-danger text-center mb-1">{{ errors.first('email') }}</p>
               <input
                 v-validate="'required|min:6'"
+                data-vv-as="密碼"
                 name="password"
                 type="password"
                 id="inputPassword"
-                class="form-control mb-1"
+                class="form-control mb-1 border-secondary"
                 placeholder="請輸入密碼"
                 v-model="user.password"
-                autocomplete="on"
               />
-              <span class="text-danger">{{ errors.first('password') }}</span>
+              <p class="text-danger text-center">{{ errors.first('password') }}</p>
               <div class="checkbox mb-3">
                 <label>
                   <input type="checkbox" value="remember-me" /> 記住我的資訊
@@ -46,15 +44,15 @@
               </div>
               <div class="text-right">
                 <button class="btn btn-md btn-submit btn-inline-block mr-2">註冊</button>
-                <button class="btn btn-md btn-success btn-inline-block" type="submit">登入</button>
+                <button class="btn btn-md btn-dark btn-inline-block" type="submit">登入</button>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-    <footer class="mt-4">
-      <footer-info></footer-info>
+    <footer class="mt-5">
+      <footerInfo></footerInfo>
     </footer>
   </div>
 </template>
@@ -100,25 +98,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scope>
 .form-signin {
   width: 100%;
-  max-width: 330px;
   padding: 15px;
-  margin: auto;
+  height: 400px;
 }
-.form-signin .checkbox {
-  font-weight: 400;
-}
+
 .form-signin .form-control {
   position: relative;
   box-sizing: border-box;
   height: auto;
   padding: 10px;
   font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
 }
 .form-signin input[type="email"] {
   margin-bottom: -1px;

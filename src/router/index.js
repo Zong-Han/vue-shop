@@ -1,16 +1,16 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Login from '@/components/Pages/Login';
-import Dashboard from '@/components/Dashboard/Dashboard';
-import Products from '@/components/Pages/Products';
-import Orders from '@/components/Pages/Orders';
-import Coupon from "@/components/Pages/Coupon";
-import PayOrder from "@/components/Pages/PayOrder";
-import Index from '@/components/Pages/Index';
-import Category from '@/components/Pages/Category';
-import AllCategory from "@/components/FrontEnd/CategoryComponents/AllCategory";
-import ProductInfo from "@/components/FrontEnd/CategoryComponents/ProductInfo";
-import CartOrders from "@/components/FrontEnd/OrderComponents/CartOrders";
+import Vue from 'vue'
+import Router from 'vue-router'
+import Login from '@/components/Pages/Login'
+import Dashboard from '@/components/Dashboard/Dashboard'
+import Products from '@/components/Pages/Products'
+import Orders from '@/components/Pages/Orders'
+import Coupon from '@/components/Pages/Coupon'
+import PayOrder from '@/components/Pages/PayOrder'
+import Index from '@/components/Pages/Index'
+import Category from '@/components/Pages/Category'
+import AllCategory from '@/components/FrontEnd/CategoryComponents/AllCategory'
+import ProductInfo from '@/components/FrontEnd/CategoryComponents/ProductInfo'
+import CartOrders from '@/components/FrontEnd/OrderComponents/CartOrders'
 
 Vue.use(Router)
 
@@ -19,7 +19,7 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: Index,
+      component: Index
     },
     {
       path: '/all-category',
@@ -27,23 +27,23 @@ export default new Router({
       component: Category,
       children: [
         {
-          path: "category/:id",
-          name: "allCategory",
+          path: 'category/:id',
+          name: 'allCategory',
           component: AllCategory
         },
         {
           path: 'product-info/:id',
           name: 'productInfo',
-          component: ProductInfo,
+          component: ProductInfo
         },
         {
-          path: "cart-orders",
-          name: "cartOrders",
+          path: 'cart-orders',
+          name: 'cartOrders',
           component: CartOrders
         },
         {
-          path: "pay-order/:id",
-          name: "payOrder",
+          path: 'pay-order/:id',
+          name: 'payOrder',
           component: PayOrder
         }
       ]
@@ -57,33 +57,33 @@ export default new Router({
       path: '/admin',
       name: 'dashboard',
       component: Dashboard,
-      meta: { requireAuth: true },//需要驗證
+      meta: { requireAuth: true }, // 需要驗證
 
       children: [
         {
           path: 'products',
           name: 'products',
           component: Products,
-          meta: { requireAuth: true },//需要驗證
+          meta: { requireAuth: true }// 需要驗證
 
         },
         {
           path: 'orders',
           name: 'orders',
           component: Orders,
-          meta: { requireAuth: true },//需要驗證
+          meta: { requireAuth: true }// 需要驗證
         },
         {
-          path: "coupon",
-          name: "coupon",
+          path: 'coupon',
+          name: 'coupon',
           component: Coupon,
           meta: { requireAuth: true }
         }
 
       ]
-    },
+    }
   ],
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
     } else {
@@ -91,4 +91,3 @@ export default new Router({
     }
   }
 })
-

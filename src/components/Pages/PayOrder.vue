@@ -2,8 +2,8 @@
   <div class="container">
     <loading :active.sync="isLoading" :can-cancel="true" :is-full-page="true"></loading>
     <div class="my-5 row justify-content-center">
-      <form class="col-md-8 mt-5">
-        <table class="table text-dark-blue">
+      <form class="col-md-8 mt-lg-5">
+        <table class="table text-dark-blue mt-5">
           <thead>
             <th>品名</th>
             <th>數量</th>
@@ -23,7 +23,6 @@
             </tr>
           </tfoot>
         </table>
-
         <table class="table">
           <tbody>
             <tr>
@@ -51,8 +50,10 @@
             </tr>
           </tbody>
         </table>
-        <router-link to="/all-category/category/clothes" class="btn btn-info">繼續選購</router-link>
-        <button v-if="order.is_paid === false" class="btn btn-danger" @click="pay">確認付款</button>
+        <div class="text-right">
+          <router-link to="/all-category/category/clothes" class="btn btn-info">繼續選購</router-link>
+          <button v-if="order.is_paid === false" class="btn btn-submit" @click="pay">確認付款</button>
+        </div>
       </form>
     </div>
   </div>
@@ -60,42 +61,42 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       order: {
-        user: "",
-        is_paid: ""
+        user: '',
+        is_paid: ''
       },
       isLoading: false
-    };
-  },
-  methods: {
-    getPayOrderId() {
-      const vm = this;
-      vm.isLoading = true;
-      let payOrderId = vm.$route.params.id;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order/${payOrderId}`;
-      vm.$http.get(api).then(res => {
-        vm.order = res.data.order;
-        vm.isLoading = false;
-      });
-    },
-    pay() {
-      const vm = this;
-      vm.isLoading = true;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/pay/${vm.order.id}`;
-      vm.$http.post(api).then(res => {
-        if (res.data.success) {
-          vm.order.is_paid === true;
-          this.getPayOrderId();
-          vm.isLoading = false;
-        }
-      });
     }
   },
-  created() {
-    this.getPayOrderId();
+  methods: {
+    getPayOrderId () {
+      const vm = this
+      vm.isLoading = true
+      const payOrderId = vm.$route.params.id
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order/${payOrderId}`
+      vm.$http.get(api).then(res => {
+        vm.order = res.data.order
+        vm.isLoading = false
+      })
+    },
+    pay () {
+      const vm = this
+      vm.isLoading = true
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/pay/${vm.order.id}`
+      vm.$http.post(api).then(res => {
+        if (res.data.success) {
+          vm.order.is_paid = true
+          this.getPayOrderId()
+          vm.$bus.$emit('getTotalOrders') // 購物車清空，導覽列數量清空
+          vm.isLoading = false
+        }
+      })
+    }
+  },
+  created () {
+    this.getPayOrderId()
   }
-};
+}
 </script>
-

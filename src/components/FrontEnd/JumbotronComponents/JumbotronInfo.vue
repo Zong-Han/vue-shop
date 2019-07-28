@@ -1,30 +1,35 @@
 <template v-cloak>
-  <section class="company pt-5 pb-5">
-    <div class="container-fluid pt-md-5">
-      <div class="row no-gutters flex-column flex-md-row justify-content-around text-center">
-        <div class="col-12 col-md-3">
-          <div class="company-info pt-md-5 pb-md-5 text-dark-blue">
-            <strong class="count d-block">9999</strong>
-            <strong>會員數量</strong>
-          </div>
+  <section id="company" class="bg-light">
+    <div class="container">
+      <div class="row no-gutters justify-content-center">
+        <div class="col-12 col-md-7 py-3 py-md-5 text-dark-blue">
+          <h3 class="company-about text-capitalize text-center ">about me</h3>
+          <ul class="company-info list-unstyled p-3 d-flex flex-wrap justify-content-center">
+            <li class="col-6 mb-1 text-center">
+              <p class="mb-1 text-muted text-capitalize">membership</p>
+              <span>1000</span>
+            </li>
+            <li class="col-6 mb-1 text-center">
+              <p class="mb-1 text-muted text-capitalize">partner</p>
+              <span>1000</span>
+            </li>
+            <li class="col-6 mb-1 text-center">
+              <p class="mb-1 text-muted text-capitalize">products</p>
+              <span>1000</span>
+            </li>
+            <li class="col-6 mb-1 text-center">
+              <p class="mb-1 text-muted text-capitalize">awards</p>
+              <span>1000</span>
+            </li>
+            <li class="col-10 mt-3 text-left border-top">
+              <small
+                class="text-muted"
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi iusto, facere est quasi hic placeat, at autem labore voluptates dolores eaque ad. Delectus, minus natus ipsum optio aut explicabo doloribus.</small>
+            </li>
+          </ul>
         </div>
-        <div class="col-12 col-md-3">
-          <div class="company-info pt-md-5 pb-md-5 text-dark-blue">
-            <strong class="count d-block">999</strong>
-            <strong>合作夥伴</strong>
-          </div>
-        </div>
-        <div class="col-12 col-md-3">
-          <div class="company-info pt-md-5 pb-md-5 text-dark-blue">
-            <strong class="count d-block">99</strong>
-            <strong>產品數量</strong>
-          </div>
-        </div>
-        <div class="col-12 col-md-3">
-          <div class="company-info pt-md-5 pb-md-5 text-dark-blue">
-            <strong class="count d-block">9</strong>
-            <strong>表揚獎項</strong>
-          </div>
+        <div class="col-10 col-md-5 order-first order-md-1">
+          <div class="company-img"></div>
         </div>
       </div>
     </div>
@@ -32,53 +37,26 @@
 </template>
 
 <style lang="scss" scoped>
+.company-about {
+  font-size: 1.5rem;
+}
 
-.company {
+.company-info {
+  font-size: 1.2rem;
+}
+
+.company-img {
   background-image: url("../../../assets/image/company-info.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
   height: 400px;
+}
 
-  .company-info {
-    font-weight: 500;
-    font-size: 1.5rem;
+@media (min-width: 768px) {
+  .company-img {
+    height: 100%;
   }
 }
+
 </style>
-<script>
-import $ from "jquery";
-export default {
-  data() {
-    return {
-      canCount: true
-    };
-  },
-  methods: {
-    // handleScroll() {
-    //   const vm = this;
-    //   let countHeight = $(".count").offset().top - window.innerHeight;
-    //   if (vm.canCount && $(window).scrollTop() > countHeight) {
-    //     $(".count").each(function() {
-    //       $(this)
-    //         .prop("Counter", 0)
-    //         .animate(
-    //           { Counter: $(this).text() },
-    //           {
-    //             duration: 2000,
-    //             easing: "linear",
-    //             step: function(now) {
-    //               $(this).text(Math.ceil(now));
-    //             }
-    //           }
-    //         );
-    //     });
-    //     vm.canCount = false;
-    //   }
-    // }
-  },
-  mounted() {
-    // window.addEventListener("scroll", this.handleScroll);
-  }
-};
-</script>

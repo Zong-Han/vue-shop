@@ -46,7 +46,7 @@
               </div>
               <div class="text-right">
                 <button class="btn btn-md btn-submit btn-inline-block mr-2">註冊</button>
-                <button class="btn btn-md btn-login btn-inline-block" type="submit">登入</button>
+                <button class="btn btn-md btn-success btn-inline-block" type="submit">登入</button>
               </div>
             </form>
           </div>
@@ -60,16 +60,16 @@
 </template>
 
 <script>
-import navbar from "@/components/FrontEnd/NavComponents/Navbar";
-import banner from "@/components/FrontEnd/CategoryComponents/Banner";
-import footerInfo from "@/components/FrontEnd/FooterComponents/FooterInfo";
+import navbar from '@/components/FrontEnd/NavComponents/Navbar'
+import banner from '@/components/FrontEnd/CategoryComponents/Banner'
+import footerInfo from '@/components/FrontEnd/FooterComponents/FooterInfo'
 export default {
-  name: "login",
-  data() {
+  name: 'login',
+  data () {
     return {
-      user: { username: "", password: "" },
+      user: { username: '', password: '' },
       isLoading: false
-    };
+    }
   },
   components: {
     navbar,
@@ -77,45 +77,30 @@ export default {
     footerInfo
   },
   methods: {
-    signin: function() {
-      const vm = this;
-      vm.isLoading = true;
-      const api = `${process.env.APIPATH}/admin/signin`;
+    signin: function () {
+      const vm = this
+      vm.isLoading = true
+      const api = `${process.env.APIPATH}/admin/signin`
       this.$http
         .post(api, {
           username: vm.user.username,
           password: vm.user.password
         })
         .then(response => {
-          if (response.data.message === "登入成功") {
-            vm.isLoading = false;
-            vm.$router.push("/admin/products");
+          if (response.data.message === '登入成功') {
+            vm.isLoading = false
+            vm.$router.push('/admin/products')
           } else {
-            vm.isLoading = false;
-            vm.$bus.$emit("message:loginFail", "登入失敗");
+            vm.isLoading = false
+            vm.$bus.$emit('message:loginFail', '登入失敗')
           }
-        });
+        })
     }
   }
-};
+}
 </script>
 
 <style scoped>
-html,
-body {
-  height: 100%;
-}
-
-body {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #f5f5f5;
-}
-
 .form-signin {
   width: 100%;
   max-width: 330px;

@@ -1,10 +1,10 @@
 <template>
-  <section class="mt-5" id="popular" v-cloak>
+  <section id="popular" class="py-5" v-cloak>
     <div class="container">
       <title-describe>POPULAR</title-describe>
-      <div class="row">
-        <div class="col-12 col-md-6 col-lg-4" v-for="(item,index) in popular" :key="item.id">
-          <template v-if="index<6">
+      <div class="row justify-content-center">
+        <div class="col-10 col-md-6 col-lg-3" v-for="(item,index) in popular" :key="item.id">
+          <template v-if="index<4">
             <product :product="item"></product>
           </template>
         </div>
@@ -14,27 +14,26 @@
 </template>
 
 <script>
-import product from "@/components/FrontEnd/CategoryComponents/Card";
-import titleDescribe from "@/components/FrontEnd/TitleComponents/TitleDescribe";
-
+import product from '@/components/FrontEnd/CategoryComponents/Card'
+import titleDescribe from '@/components/FrontEnd/TitleComponents/TitleDescribe'
 export default {
-  data() {
+  data () {
     return {
       popular: []
-    };
+    }
   },
   components: {
     product,
     titleDescribe
   },
-  created() {
-    const vm = this;
-    const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products?page=1`;
+  created () {
+    const vm = this
+    const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products?page=1`
     vm.$http.get(api).then(res => {
       if (res.data.success) {
-        vm.popular = res.data.products;
+        vm.popular = res.data.products
       }
-    });
+    })
   }
-};
+}
 </script>

@@ -194,126 +194,125 @@
   </div>
 </template>
 
-
 <script>
-import $ from "jquery";
+import $ from 'jquery'
 
 export default {
-  data: function() {
+  data: function () {
     return {
       products: [],
       newProduct: {},
       isLoading: false,
       pageItem: {},
-      search: ""
-    };
+      search: ''
+    }
   },
   computed: {
-    searchPriduct() {
-      const vm = this;
-      var filterProduct = vm.search.toLowerCase();
-      if (filterProduct.trim() !== "") {
+    searchPriduct () {
+      const vm = this
+      var filterProduct = vm.search.toLowerCase()
+      if (filterProduct.trim() !== '') {
         return vm.products.filter(item => {
-          let word=item.title.split('');//將每一個字串分開成一個個字，並回傳新的陣列
-          return word.indexOf(filterProduct) > -1;
-        });
+          const word = item.title.split('')// 將每一個字串分開成一個個字，並回傳新的陣列
+          return word.indexOf(filterProduct) > -1
+        })
       } else {
-        return vm.products;
+        return vm.products
       }
     }
   },
   methods: {
-    getProducts: function() {
-      const vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/products?page=${this.pageItem.current_page}`;
-      vm.isLoading = !vm.isLoading;
+    getProducts: function () {
+      const vm = this
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/products?page=${this.pageItem.current_page}`
+      vm.isLoading = !vm.isLoading
       this.$http.get(api).then(response => {
-        this.pageItem = response.data.pagination;
-        this.products = response.data.products;
-        vm.isLoading = !vm.isLoading;
-      });
+        this.pageItem = response.data.pagination
+        this.products = response.data.products
+        vm.isLoading = !vm.isLoading
+      })
     },
-    openModel(product) {
-      $("#productModal").modal("show");
+    openModel (product) {
+      $('#productModal').modal('show')
       if (product.id) {
-        this.newProduct = product;
+        this.newProduct = product
       } else {
-        this.newProduct = {};
+        this.newProduct = {}
       }
     },
-    isEnable() {
+    isEnable () {
       if (this.newProduct.is_enabled === true) {
-        this.newProduct.is_enabled = 1;
+        this.newProduct.is_enabled = 1
       } else {
-        this.newProduct.is_enabled = 0;
+        this.newProduct.is_enabled = 0
       }
     },
-    confirmProduct() {
-      const vm = this;
+    confirmProduct () {
+      const vm = this
       if (vm.newProduct.id) {
-        //更新
-        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${this.newProduct.id}`;
+        // 更新
+        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${this.newProduct.id}`
         vm.$http.put(api, { data: vm.newProduct }).then(response => {
           if (response.data.success) {
-            console.log(response.data.message);
-            vm.getProducts();
+            console.log(response.data.message)
+            vm.getProducts()
           }
-        });
+        })
       } else {
-        //新增
-        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product`;
+        // 新增
+        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product`
         vm.$http.post(api, { data: vm.newProduct }).then(response => {
           if (response.data.success) {
-            vm.isLoading = !vm.isLoading;
-            console.log(response.data.message);
-            vm.getProducts();
-            vm.isLoading = !vm.isLoading;
+            vm.isLoading = !vm.isLoading
+            console.log(response.data.message)
+            vm.getProducts()
+            vm.isLoading = !vm.isLoading
           }
-        });
+        })
       }
-      $("#productModal").modal("hide");
+      $('#productModal').modal('hide')
     },
-    deleteModel(product) {
-      let vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${product.id}`;
+    deleteModel (product) {
+      const vm = this
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${product.id}`
       vm.$http.delete(api).then(response => {
         if (response.data.success) {
-          vm.isLoading = !vm.isLoading;
-          vm.getProducts();
-          vm.isLoading = !vm.isLoading;
+          vm.isLoading = !vm.isLoading
+          vm.getProducts()
+          vm.isLoading = !vm.isLoading
         }
-      });
+      })
     },
-    uploadImg() {
-      let vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/upload`;
-      let uploadImg = vm.$refs.files.files[0];
-      let formData = new FormData();
-      formData.append("uploadImg", uploadImg);
-      vm.isLoading = !vm.isLoading;
+    uploadImg () {
+      const vm = this
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/upload`
+      const uploadImg = vm.$refs.files.files[0]
+      const formData = new FormData()
+      formData.append('uploadImg', uploadImg)
+      vm.isLoading = !vm.isLoading
       vm.$http
         .post(api, formData, {
           headers: {
-            "Content-Type": "multipart/form-data"
+            'Content-Type': 'multipart/form-data'
           }
         })
         .then(response => {
           if (response.data.success) {
-            vm.$set(vm.newProduct, "imageUrl", response.data.imageUrl);
+            vm.$set(vm.newProduct, 'imageUrl', response.data.imageUrl)
           } else {
-            vm.$bus.$emit("message:push", response.data.message, "danger");
+            vm.$bus.$emit('message:push', response.data.message, 'danger')
           }
-          vm.isLoading = !vm.isLoading;
-        });
+          vm.isLoading = !vm.isLoading
+        })
     }
   },
-  created() {
-    const vm = this;
-    vm.getProducts();
-    vm.$bus.$on("changePage", function(num) {
-      vm.pageItem.current_page = vm.pageItem.current_page + num;
-      vm.getProducts();
-    });
+  created () {
+    const vm = this
+    vm.getProducts()
+    vm.$bus.$on('changePage', function (num) {
+      vm.pageItem.current_page = vm.pageItem.current_page + num
+      vm.getProducts()
+    })
   }
-};
+}
 </script>

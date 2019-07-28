@@ -11,7 +11,7 @@
       <div class="row justify-content-center">
         <div class="col-12 col-md-5">
           <div class="category-card h-5 position-relative mb-2">
-            <img src="../../../assets/image/category-clothes.jpg" class="category-card-img" alt="clothes" />
+            <div class="card-clothes"></div>
             <router-link
               to="all-category/category/clothes"
               class="card-img-overlay btn text-white"
@@ -22,7 +22,7 @@
           <div class="row">
             <div class="col-12 col-md-6">
               <div class="category-card position-relative h-2 mb-2">
-                <img src="../../../assets/image/category-shoes.jpg" class="category-card-img" alt="shoes" />
+                <div class="card-shoes"></div>
                 <router-link
                   to="all-category/category/shoes"
                   class="card-img-overlay btn text-white"
@@ -31,7 +31,7 @@
             </div>
             <div class="col-12 col-md-6">
               <div class="category-card position-relative h-2 mb-2">
-                <img src="../../../assets/image/category-skirt.jpg" class="category-card-img" alt="bag" />
+                <div class="card-skirt"></div>
                 <router-link
                   to="all-category/category/skirt"
                   class="card-img-overlay btn text-white"
@@ -40,7 +40,7 @@
             </div>
             <div class="col-12 col-md-12">
               <div class="category-card position-relative h-2">
-                <img src="../../../assets/image/category-bag.jpg" class="category-card-img" alt="bag" />
+                <div class="card-bag"></div>
                 <router-link
                   to="all-category/category/bag"
                   class="card-img-overlay btn text-white"
@@ -55,14 +55,67 @@
 </template>
 
 <script>
-import titleDescribe from "@/components/FrontEnd/TitleComponents/TitleDescribe";
-
+import titleDescribe from '@/components/FrontEnd/TitleComponents/TitleDescribe'
+import $ from 'jquery'
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
   components: {
     titleDescribe
   }
-};
+}
 </script>
+
+<style lang="scss" scoped>
+%category-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  max-height: 100%;
+}
+.card-clothes {
+  background-image: url("../../../assets/image/category-clothes.jpg");
+  @extend %category-background;
+}
+
+.card-shoes {
+  background-image: url("../../../assets/image/category-shoes.jpg");
+  @extend %category-background;
+}
+
+.card-skirt {
+  background-image: url("../../../assets/image/category-skirt.jpg");
+  @extend %category-background;
+}
+.card-bag {
+  background-image: url("../../../assets/image/category-bag.jpg");
+  @extend %category-background;
+}
+.category {
+  .category-info {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    font-size: 1.5rem;
+  }
+
+  .h-5 {
+    height: 510px;
+  }
+  .h-2 {
+    height: 250px;
+  }
+
+  @media (min-width: 768px) {
+    .category-info {
+      font-size: 2rem;
+    }
+    .btn {
+      font-size: 2rem;
+    }
+  }
+}
+</style>

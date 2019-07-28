@@ -6,7 +6,7 @@
     <div class="main">
       <jumbotron>
         <template v-slot:jumbotron-img>
-          <img class="jumbotron-img" src="../../assets/image/jumbotron-img.jpg" alt="jumbotron-img" />
+          <div class="jumbotron-bg"></div>
         </template>
         <template v-slot:title>
           <h1 class="title mt-2">2019 #NEW SUMMER CLOTHING</h1>
@@ -18,7 +18,7 @@
       <category-card></category-card>
       <jumbotron>
         <template v-slot:jumbotron-img>
-          <img class="jumbotron-img" src="../../assets/image/jumbotron-img2.jpg" alt="jumbotron-img" />
+          <div class="jumbotron-subbg"></div>
         </template>
       </jumbotron>
       <new-products></new-products>
@@ -33,21 +33,21 @@
 </template>
 
 <script>
-import navbar from "@/components/FrontEnd/NavComponents/Navbar";
-import jumbotron from "@/components/FrontEnd/JumbotronComponents/Jumbotron";
-import jumbotronInfo from "@/components/FrontEnd/JumbotronComponents/JumbotronInfo";
-import categoryCard from "@/components/FrontEnd/CategoryComponents/categoryCard";
-import newProducts from "@/components/FrontEnd/NewProductComponents/NewProducts";
-import popularCard from "@/components/FrontEnd/PopularComponents/PopularCard";
-import subscribe from "@/components/FrontEnd/SubscribeComponents/Subscribe";
-import footerInfo from "@/components/FrontEnd/FooterComponents/FooterInfo";
+import navbar from '@/components/FrontEnd/NavComponents/Navbar'
+import jumbotron from '@/components/FrontEnd/JumbotronComponents/Jumbotron'
+import jumbotronInfo from '@/components/FrontEnd/JumbotronComponents/JumbotronInfo'
+import categoryCard from '@/components/FrontEnd/CategoryComponents/categoryCard'
+import newProducts from '@/components/FrontEnd/NewProductComponents/NewProducts'
+import popularCard from '@/components/FrontEnd/PopularComponents/PopularCard'
+import subscribe from '@/components/FrontEnd/SubscribeComponents/Subscribe'
+import footerInfo from '@/components/FrontEnd/FooterComponents/FooterInfo'
 
 export default {
-  name: "index",
-  data() {
+  name: 'index',
+  data () {
     return {
       isLoading: true
-    };
+    }
   },
   methods: {},
   components: {
@@ -60,5 +60,5 @@ export default {
     subscribe,
     footerInfo
   }
-};
+}
 </script>

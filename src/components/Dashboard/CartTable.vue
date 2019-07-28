@@ -49,23 +49,23 @@
 </template>
 <script>
 export default {
-    data(){
-      return{
-        couponCode:""
-      }
-    },
-    props:["carts"],
-
-    methods:{
-      deleteCart(id){
-        const vm=this;
-        vm.$emit('deleteCart',id)
-      },
-      sendCouponCode(){
-        const vm=this;
-        vm.$emit('useCouponCode',this.couponCode)
-      },
-      
+  data () {
+    return {
+      couponCode: ''
     }
+  },
+  props: ['carts'],
+
+  methods: {
+    deleteCart (id) {
+      const vm = this
+      vm.$emit('deleteCart', id)
+    },
+    sendCouponCode () {
+      const vm = this
+      vm.$emit('useCouponCode', this.couponCode)
+    }
+
+  }
 }
 </script>

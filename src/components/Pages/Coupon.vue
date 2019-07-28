@@ -123,105 +123,103 @@
   </div>
 </template>
 
-
-
 <script>
-import $ from "jquery";
-import Datepicker from "vuejs-datepicker";
-import { zh } from "vuejs-datepicker/dist/locale";
+import $ from 'jquery'
+import Datepicker from 'vuejs-datepicker'
+import { zh } from 'vuejs-datepicker/dist/locale'
 
 export default {
-  data: function() {
+  data: function () {
     return {
       coupons: [],
       newCoupon: {},
       isLoading: false,
       pageItem: {},
-      format: "yyyy-MM-dd",
+      format: 'yyyy-MM-dd',
       zhlanguage: zh,
       highlighted: {
         to: new Date()
       }
-    };
+    }
   },
   components: {
     Datepicker
   },
   methods: {
-    getCoupon: function() {
-      const vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupons?page=${this.pageItem.current_page}`;
-      vm.isLoading = !vm.isLoading;
+    getCoupon: function () {
+      const vm = this
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupons?page=${this.pageItem.current_page}`
+      vm.isLoading = !vm.isLoading
       this.$http.get(api).then(response => {
-        console.log(response.data);
-        this.pageItem = response.data.pagination;
-        this.coupons = response.data.coupons;
-        vm.isLoading = !vm.isLoading;
-      });
+        console.log(response.data)
+        this.pageItem = response.data.pagination
+        this.coupons = response.data.coupons
+        vm.isLoading = !vm.isLoading
+      })
     },
-    openCoupon(coupon) {
-      $("#couponModalCenter").modal("show");
+    openCoupon (coupon) {
+      $('#couponModalCenter').modal('show')
       if (coupon.id) {
-        this.newCoupon = coupon;
+        this.newCoupon = coupon
       } else {
-        this.newCoupon = {};
+        this.newCoupon = {}
       }
     },
-    isEnable() {
+    isEnable () {
       if (this.newCoupon.is_enabled === true) {
-        this.newCoupon.is_enabled = 1;
+        this.newCoupon.is_enabled = 1
       } else {
-        this.newCoupon.is_enabled = 0;
+        this.newCoupon.is_enabled = 0
       }
     },
-    confirmCoupon() {
-      const vm = this;
+    confirmCoupon () {
+      const vm = this
       if (vm.newCoupon.id) {
-        //更新
-        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${this.newCoupon.id}`;
+        // 更新
+        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${this.newCoupon.id}`
         vm.$http.put(api, { data: vm.newCoupon }).then(response => {
           if (response.data.success) {
-            console.log(response.data.message);
-            vm.getCoupon();
+            console.log(response.data.message)
+            vm.getCoupon()
           }
-        });
+        })
       } else {
-        //新增優惠券
-        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon`;
+        // 新增優惠券
+        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon`
         vm.$http.post(api, { data: vm.newCoupon }).then(response => {
           if (response.data.success) {
-            vm.isLoading = !vm.isLoading;
-            console.log(response.data.message);
-            vm.getCoupon();
-            vm.isLoading = !vm.isLoading;
+            vm.isLoading = !vm.isLoading
+            console.log(response.data.message)
+            vm.getCoupon()
+            vm.isLoading = !vm.isLoading
           }
-        });
+        })
       }
-      $("#couponModalCenter").modal("hide");
+      $('#couponModalCenter').modal('hide')
     },
-    deleteCoupon(coupon) {
-      let vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${coupon.id}`;
+    deleteCoupon (coupon) {
+      const vm = this
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${coupon.id}`
       vm.$http.delete(api).then(response => {
         if (response.data.success) {
-          console.log(response.data.message);
-          vm.isLoading = !vm.isLoading;
-          vm.getCoupon();
-          vm.isLoading = !vm.isLoading;
+          console.log(response.data.message)
+          vm.isLoading = !vm.isLoading
+          vm.getCoupon()
+          vm.isLoading = !vm.isLoading
         }
-      });
+      })
     },
-    changePage(num) {
-      this.pageItem.current_page = this.pageItem.current_page + num;
-      this.getCoupon();
+    changePage (num) {
+      this.pageItem.current_page = this.pageItem.current_page + num
+      this.getCoupon()
     },
-    clearSelected() {
-      $('.modal input[type="text"]').val("");
+    clearSelected () {
+      $('.modal input[type="text"]').val('')
     }
   },
-  created() {
-    const vm = this;
-    this.getCoupon();
+  created () {
+    const vm = this
+    vm.getCoupon()
   }
-};
+}
 </script>

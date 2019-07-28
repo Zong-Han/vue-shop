@@ -1,16 +1,16 @@
 <template>
-  <div class="container pt-5">
+  <div class="container pt-1 pt-md-5">
     <loading :active.sync="isLoading" :can-cancel="true" :is-full-page="true"></loading>
-    <div class="row text-dark-blue">
+    <div class="row text-dark-blue mt-5">
       <div class="col-12 mb-4">
-        <h4 class="d-flex flex-column justify-content-around align-items-center mb-3">
+        <div class="d-flex flex-column align-items-center mb-3">
           <span class="mb-1" v-if="carts.carts">
             您的購物車內有
             <span class="text-light-red">{{carts.carts.length}}</span> 筆訂單
           </span>
           <span class="mb-1 text-light-red" v-if="carts.total>=1000">您以符合周年慶滿千折百活動</span>
-          <span class="mb-1 text-light-blue" v-if="carts.total>=1000">輸入優惠碼 greentea 即可享有九折優惠</span>
-        </h4>
+          <span class="mb-1" v-if="carts.total>=1000">輸入優惠碼 greentea 即可享有九折優惠</span>
+        </div>
         <ul class="list-group mb-3 text-center">
           <li
             v-for="item in carts.carts"
@@ -22,18 +22,18 @@
             </div>
             <div class="col-12 col-md-4 p-1 text-center mb-2">
               <h5 class="mt-1">{{item.product.title}}</h5>
-              <div class="text-success" v-if="item.coupon">已套用優惠券</div>
               <small>{{item.product.description}}</small>
             </div>
             <div class="col-4 col-md-2">
               <span>{{ item.product.price|currencyFilter }}X{{item.qty}}{{item.product.unit}}</span>
             </div>
             <div class="col-4 col-md-2">
-              <p class="mb-0">總價:{{ item.total | currencyFilter }}元</p>
+              <p class="mb-0">總價 {{ item.total | currencyFilter }} 元</p>
+              <div class="text-success" v-if="item.coupon">已套用優惠券</div>
               <p
                 class="text-nowrap text-success"
                 v-if="item.final_total !== item.total "
-              >折扣價{{ item.final_total | currencyFilter }}</p>
+              >折扣價 {{ item.final_total | currencyFilter }} 元</p>
             </div>
             <div class="col-4 col-md-1">
               <button
@@ -50,8 +50,8 @@
             <strong
               v-if="carts.final_total == carts.total"
               class="text-light-red"
-            >{{carts.total | currencyFilter}}元</strong>
-            <strong v-else class="text-light-red">{{carts.final_total | currencyFilter}}元</strong>
+            >{{carts.total | currencyFilter}} 元</strong>
+            <strong v-else class="text-light-red">{{carts.final_total | currencyFilter}} 元</strong>
           </li>
         </ul>
         <form class="card p-2">
@@ -274,83 +274,79 @@
 }
 </style>
 
-
 <script>
-import $ from "jquery";
-
 export default {
-  data() {
+  data () {
     return {
       carts: [],
-      couponCode: "",
-      paymentMethod: "",
+      couponCode: '',
+      paymentMethod: '',
       isLoading: false,
-      couponCode: "",
       form: {
         user: {
-          name: "",
-          email: "",
-          tel: "",
-          address: ""
+          name: '',
+          email: '',
+          tel: '',
+          address: ''
         },
-        message: "留下您的訊息"
+        message: '留下您的訊息'
       }
-    };
+    }
   },
 
   methods: {
-    getCartOrders() {
-      const vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
-      vm.isLoading = true;
+    getCartOrders () {
+      const vm = this
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`
+      vm.isLoading = true
       vm.$http.get(api).then(response => {
         if (response.data.success) {
-          vm.carts = response.data.data;
-          vm.isLoading = false;
+          vm.carts = response.data.data
+          vm.isLoading = false
         }
-      });
+      })
     },
-    deleteCart(id) {
-      const vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
-      vm.isLoading = true;
+    deleteCart (id) {
+      const vm = this
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`
+      vm.isLoading = true
       vm.$http.delete(api).then(res => {
-        if (res.data.message == "已刪除") {
-          this.getCartOrders();
-          vm.isLoading = false;
-          vm.$bus.$emit("message:deleteCart", "商品已刪除"); //觸發訊息回饋
-          vm.$bus.$emit("getTotalOrders"); //觸發導覽列購物車數量更新
+        if (res.data.message === '已刪除') {
+          this.getCartOrders()
+          vm.isLoading = false
+          vm.$bus.$emit('message:deleteCart', '商品已刪除') // 觸發訊息回饋
+          vm.$bus.$emit('getDeleteOrders') // 觸發導覽列購物車數量更新
         }
-      });
+      })
     },
-    sendCouponCode() {
-      const vm = this;
-      vm.isLoading = true;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`;
+    sendCouponCode () {
+      const vm = this
+      vm.isLoading = true
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`
       vm.$http.post(api, { data: { code: vm.couponCode } }).then(res => {
         if (res.data.success) {
-          this.getCartOrders();
-          vm.$bus.$emit("message:sendCouponCode", "已套用優惠券"); //觸發訊息回饋
+          this.getCartOrders()
+          vm.$bus.$emit('message:sendCouponCode', '已套用優惠券') // 觸發訊息回饋
         } else {
-          vm.$bus.$emit("message:sendCouponCodeFalse", "優惠券套用失敗"); //觸發訊息回饋
+          vm.$bus.$emit('message:sendCouponCodeFalse', '優惠券套用失敗') // 觸發訊息回饋
         }
-        vm.isLoading = false;
-      });
+        vm.isLoading = false
+      })
     },
-    checkout() {
-      const vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`;
+    checkout () {
+      const vm = this
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`
       vm.$http.post(api, { data: vm.form }).then(res => {
         if (res.data.success) {
-          vm.$router.push(`/all-category/pay-order/${res.data.orderId}`);
+          vm.$router.push(`/all-category/pay-order/${res.data.orderId}`)
         } else {
-          vm.$bus.$emit("message:checkoutFail", "訂單送出失敗"); //觸發訂單送出失敗訊息回饋
+          vm.$bus.$emit('message:checkoutFail', '訂單送出失敗') // 觸發訂單送出失敗訊息回饋
         }
-      });
+      })
     }
   },
-  created() {
-    this.getCartOrders();
+  created () {
+    this.getCartOrders()
   }
-};
+}
 </script>

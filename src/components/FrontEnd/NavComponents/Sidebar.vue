@@ -1,21 +1,33 @@
 <template>
   <div>
     <nav class="sidebar text-dark-blue text-center">
-      <ul class="category-list mb-3">
+      <ul class="category-list mb-3 list-unstyled">
         <li class="p-2">
-          <router-link to="clothes" class="text-dark-blue" :class="{'active':$route.params.id=='clothes'}">
+          <router-link
+            to="clothes"
+            class="text-dark-blue"
+            :class="{'active':$route.params.id=='clothes'}"
+          >
             <i class="fas fa-tshirt"></i>
             CLOTHES
           </router-link>
         </li>
         <li class="p-2">
-          <router-link to="skirt" class="text-dark-blue" :class="{'active':$route.params.id=='skirt'}">
+          <router-link
+            to="skirt"
+            class="text-dark-blue"
+            :class="{'active':$route.params.id=='skirt'}"
+          >
             <i class="fas fa-female"></i>
             SKIRT
           </router-link>
         </li>
         <li class="p-2">
-          <router-link to="shoes" class="text-dark-blue" :class="{'active':$route.params.id=='shoes'}">
+          <router-link
+            to="shoes"
+            class="text-dark-blue"
+            :class="{'active':$route.params.id=='shoes'}"
+          >
             <i class="fas fa-shoe-prints"></i>
             SHOES
           </router-link>
@@ -30,22 +42,15 @@
       </ul>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <label class="input-group-text text-dark-blue" for="inputGroupSelect01">售價</label>
+          <label class="input-group-text text-dark-blue bg-white border-secondary" for="money-select">售價</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect" v-model="price" @change="priceSelect">
+        <select class="custom-select border-secondary text-dark-blue" id="money-select" v-model="price" @change="priceSelect">
           <option selected value="null">選擇價位</option>
           <option value="1000">0-1000</option>
           <option value="2000">1000-2000</option>
           <option value="3000">2000-3000</option>
         </select>
       </div>
-      <p>SIZE</p>
-      <ul class="option-list d-flex">
-        <li class="flex-grow-1">S</li>
-        <li class="flex-grow-1">M</li>
-        <li class="flex-grow-1">L</li>
-        <li class="flex-grow-1">XL</li>
-      </ul>
     </nav>
   </div>
 </template>
@@ -81,30 +86,29 @@
 </style>
 
 <script>
-import $ from "jquery";
 export default {
-  data() {
+  data () {
     return {
       price: null
-    };
+    }
   },
-  props: ["reSelect"],
+  props: ['reSelect'],
   methods: {
-    priceSelect() {
-      const vm = this;
-      vm.$bus.$emit("selectPrice", Number(vm.price));//觸發AllCategory 元件
+    priceSelect () {
+      const vm = this
+      vm.$bus.$emit('selectPrice', Number(vm.price))// 觸發 AllCategory 元件
     }
   },
   watch: {
-    reSelect: {//價位選單重新更新
+    reSelect: { // 價位選單重新更新
       immediate: true,
-      handler(newVal, oldVal) {
-        const vm = this;
+      handler (newVal, oldVal) {
+        const vm = this
         if (newVal === true) {
-          vm.price = null;
+          vm.price = null
         }
       }
     }
-  },
-};
+  }
+}
 </script>

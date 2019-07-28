@@ -8,11 +8,11 @@
 <script>
 import alert from '@/components/FrontEnd/MessageComponents/MessageAlert'
 export default {
-  name: "App",
-  components:{
+  name: 'App',
+  components: {
     alert
   }
-};
+}
 </script>
 
 <style lang='scss'>

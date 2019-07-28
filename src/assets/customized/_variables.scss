@@ -1,21 +1,8 @@
 // color variables
 $light-red: #ff6f61;
 $soft-cyan: #9cd7db;
-$bright-yellow: #fcdc29;
-$light-grayish-orange: #e8ddbf;
-$is-danger: #f22435;
 $dark-blue: #273057;
-$dark-gray: #868995;
-$dark-cyan: #00656b;
-$grayish-cyan: #e4f9fe;
-$light-blue: #286d9a;
-
-//font-size
-$text-xl: 2.5rem;
-$text-lg: 2rem;
-$text-md: 1.5rem;
-$text-sm: 1.2rem;
-$text-xs: 1rem;
+$bright-yellow: #fcdc29;
 
 //text-color
 .text-light-red {
@@ -30,51 +17,8 @@ $text-xs: 1rem;
   color: $bright-yellow;
 }
 
-.text-light-grayish-orange {
-  color: $light-grayish-orange;
-}
-
 .text-dark-blue {
   color: $dark-blue;
-}
-
-.text-dark-gray {
-  color: $dark-gray;
-}
-
-.text-dark-cyan {
-  color: $dark-cyan;
-}
-
-.text-light-blue {
-  color: $light-blue;
-}
-
-//background-colorF
-.background-light-red {
-  background-color: $light-red;
-}
-
-.background-white {
-  background-color: #fff;
-}
-
-.background-grayish-cyan {
-  background-color: $grayish-cyan;
-}
-
-.background-grayish-orange {
-  background-color: $light-grayish-orange;
-}
-
-//border-color
-.is-danger {
-  border-color: #f22435;
-}
-
-//icon
-.fa-1x {
-  font-size: $text-md;
 }
 
 //cursor-pointer
@@ -89,7 +33,7 @@ $text-xs: 1rem;
   border-color: $light-red;
 
   &:hover {
-    background-color: $is-danger;
+    background-color: red;
     color: #fff;
   }
 }
@@ -99,10 +43,8 @@ $text-xs: 1rem;
   border-color: $dark-blue;
 }
 
-.btn-login {
-  background-color: $light-blue;
-  color: white;
-  &:hover {
-    color: #fff;
-  }
+.origin-price {
+  text-decoration: line-through;
+  text-decoration-color: #ff6f61;
 }
+

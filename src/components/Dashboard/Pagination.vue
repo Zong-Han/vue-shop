@@ -28,17 +28,17 @@
 
 <script>
 export default {
-  props: ["pageItem"],
+  props: ['pageItem'],
   methods: {
-    goPage(num) {
-      const vm=this
+    goPage (num) {
+      const vm = this
       if (num === 0) {
         num = Number(event.target.textContent) < this.pageItem.current_page ? -1 : 1
       }
       if (this.pageItem.has_pre || this.pageItem.has_next) {
-        vm.$bus.$emit('changePage',num);
+        vm.$bus.$emit('changePage', num)
       }
     }
   }
-};
+}
 </script>

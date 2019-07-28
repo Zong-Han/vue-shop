@@ -13,19 +13,21 @@
 </template>
 
 <style lang="scss" scoped>
-@import "../../assets/customized/dashboard/dashboard";
+[role="main"] {
+  padding-top: 60px;
+}
+
 </style>
 
-
 <script>
-import navbar from "./Navbar";
-import sidebar from "./Sidebar";
+import navbar from './Navbar'
+import sidebar from './Sidebar'
 
 export default {
-  name: "Dashboard",
+  name: 'Dashboard',
   components: {
     navbar,
     sidebar
   }
-};
+}
 </script>

@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import shoppingCart from '@/components/FrontEnd/ShoppingCartComponents/ShoppingCart'
+import shoppingCart from '../ShoppingCartComponents/ShoppingCart'
 
 export default {
   props: ['product'],

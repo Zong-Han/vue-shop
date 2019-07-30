@@ -2,7 +2,7 @@
   <section class="pt-5 pb-5" id="new-products" v-cloak>
     <loading :active.sync="isLoading" :can-cancel="true" :is-full-page="true"></loading>
     <div class="container">
-      <title-describe>NEW PRODUSTS</title-describe>
+      <titleDescribe>NEW PRODUSTS</titleDescribe>
       <div class="row justify-content-center align-items-center">
         <div class="col-12 col-lg-7">
           <div class="row justify-content-center">
@@ -65,7 +65,8 @@
 </style>
 
 <script>
-import titleDescribe from '@/components/FrontEnd/TitleComponents/TitleDescribe'
+import titleDescribe from '../TitleComponents/TitleDescribe'
+
 export default {
   data () {
     return {

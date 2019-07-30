@@ -59,23 +59,7 @@
 .sidebar .nav-link {
   font-weight: 500;
 }
-
-.sidebar .nav-link .feather {
-  margin-right: 4px;
-  color: #999;
-}
-
-.sidebar .nav-link.active {
-  color: #007bff;
-}
-
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
-}
-
-.sidebar-heading {
-  font-size: 0.75rem;
-  text-transform: uppercase;
+a.router-link-exact-active{
+  color:#ff6f61 !important;
 }
 </style>

@@ -51,8 +51,8 @@
           </tbody>
         </table>
         <div class="text-right">
-          <router-link to="/all-category/category/clothes" class="btn btn-info">繼續選購</router-link>
-          <button v-if="order.is_paid === false" class="btn btn-submit" @click="pay">確認付款</button>
+          <router-link to="/all-category/category/clothes" class="btn btn-info mr-1">繼續選購</router-link>
+          <button v-if="order.is_paid === false" class="btn btn-submit" @click.prevent="pay">確認付款</button>
         </div>
       </form>
     </div>
@@ -64,8 +64,9 @@ export default {
   data () {
     return {
       order: {
-        user: '',
-        is_paid: ''
+        user: {},
+        is_paid: '',
+        id: ''
       },
       isLoading: false
     }

@@ -1,98 +1,96 @@
 <template>
-  <div>
-    <nav class="navbar fix-navbar">
-      <router-link to="/" exact class="font-weight-bold d-lg-none text-dark text-decoration-none">
-        <i class="fas fa-home"></i>
-        衣美診所
-      </router-link>
-      <span class="icons ml-auto d-lg-none">
-        <i class="fas fa-bars cursor-pointer" @click="showShopNavbar"></i>
-      </span>
-      <ul class="shop-nav text-center list-unstyled">
-        <li class="text-right d-lg-none">
-          <i class="fas fa-times fa-2x mr-1 text-muted cursor-pointer" @click="showShopNavbar"></i>
-        </li>
-        <li class="pt-3 pb-3 d-none d-lg-block">
-          <router-link to="/" exact class="text-dark-blue text-decoration-none">
-            <i class="fas fa-home"></i>
-            衣美診所
-          </router-link>
-        </li>
-        <li class="pt-3 pb-3 position-relative" ref="category">
-          <router-link
-            to="/all-category/category/clothes"
-            class="text-dark-blue text-decoration-none"
-            :class="{'color-active': routeId}"
-          >
-            <i class="fas fa-box-open"></i>
-            CATEGORY
-          </router-link>
-          <i class="fas fa-caret-down text-muted cursor-pointer" @click="showCategory"></i>
-          <ul class="category-navbar text-center list-unstyled text-decoration-none">
-            <li class="p-2 p-lg-3">
-              <router-link
-                to="/all-category/category/clothes"
-                class="text-dark-blue text-decoration-none"
-              >
-                <i class="fas fa-tshirt"></i>
-                CLOTHES 上衣
-              </router-link>
-            </li>
-            <li class="p-2 p-lg-3">
-              <router-link
-                to="/all-category/category/skirt"
-                class="text-dark-blue text-decoration-none"
-              >
-                <i class="fas fa-female"></i>
-                SKIRT 裙子
-              </router-link>
-            </li>
-            <li class="p-2 p-lg-3">
-              <router-link
-                to="/all-category/category/shoes"
-                class="text-dark-blue text-decoration-none"
-              >
-                <i class="fas fa-shoe-prints"></i>
-                SHOES 鞋子
-              </router-link>
-            </li>
-            <li class="p-2 p-lg-3">
-              <router-link
-                to="/all-category/category/bag"
-                class="text-dark-blue text-decoration-none"
-              >
-                <i class="fas fa-shopping-bag"></i>
-                BAG 包包
-              </router-link>
-            </li>
-          </ul>
-        </li>
-        <li class="pt-3 pb-3" ref="category2">
-          <router-link to="/all-category/category/all" class="text-dark-blue text-decoration-none">
-            <i class="fas fa-fire"></i>
-            POPULAR
-          </router-link>
-        </li>
-        <li class="pt-3 pb-3">
-          <router-link to="/login" class="text-dark-blue text-decoration-none">
-            <i class="fas fa-user"></i>
-            LOGIN
-          </router-link>
-        </li>
-        <li class="pt-3 pb-3">
-          <router-link
-            to="/all-category/cart-orders"
-            class="text-dark-blue text-decoration-none"
-            :class="{'text-danger ':totalOrders>0}"
-          >
-            <i class="fas fa-shopping-cart"></i>
-            CHECKOUT
-            <template v-if="totalOrders>0">({{totalOrders}})</template>
-          </router-link>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <nav class="navbar fix-navbar">
+    <router-link to="/" exact class="font-weight-bold d-lg-none text-dark text-decoration-none">
+      <i class="fas fa-home"></i>
+      衣美診所
+    </router-link>
+    <span class="icons ml-auto d-lg-none">
+      <i class="fas fa-bars cursor-pointer" @click="showShopNavbar"></i>
+    </span>
+    <ul class="shop-nav text-center list-unstyled">
+      <li class="text-right d-lg-none">
+        <i class="fas fa-times fa-2x mr-1 text-muted cursor-pointer" @click="showShopNavbar"></i>
+      </li>
+      <li class="pt-3 pb-3 d-none d-lg-block">
+        <router-link to="/" exact class="text-dark-blue text-decoration-none">
+          <i class="fas fa-home"></i>
+          衣美診所
+        </router-link>
+      </li>
+      <li class="pt-3 pb-3 position-relative" ref="category">
+        <router-link
+          to="/all-category/category/clothes"
+          class="text-dark-blue text-decoration-none"
+          :class="{'color-active': routeId}"
+        >
+          <i class="fas fa-box-open"></i>
+          商品種類
+        </router-link>
+        <i class="fas fa-caret-down text-muted cursor-pointer" @click="showCategory"></i>
+        <ul class="category-navbar text-center list-unstyled text-decoration-none">
+          <li class="p-2 p-lg-3">
+            <router-link
+              to="/all-category/category/clothes"
+              class="text-dark-blue text-decoration-none"
+            >
+              <i class="fas fa-tshirt"></i>
+              CLOTHES 上衣
+            </router-link>
+          </li>
+          <li class="p-2 p-lg-3">
+            <router-link
+              to="/all-category/category/skirt"
+              class="text-dark-blue text-decoration-none"
+            >
+              <i class="fas fa-female"></i>
+              SKIRT 裙子
+            </router-link>
+          </li>
+          <li class="p-2 p-lg-3">
+            <router-link
+              to="/all-category/category/shoes"
+              class="text-dark-blue text-decoration-none"
+            >
+              <i class="fas fa-shoe-prints"></i>
+              SHOES 鞋子
+            </router-link>
+          </li>
+          <li class="p-2 p-lg-3">
+            <router-link
+              to="/all-category/category/bag"
+              class="text-dark-blue text-decoration-none"
+            >
+              <i class="fas fa-shopping-bag"></i>
+              BAG 包包
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li class="pt-3 pb-3" ref="category2">
+        <router-link to="/all-category/category/all" class="text-dark-blue text-decoration-none">
+          <i class="fas fa-fire"></i>
+          熱門商品
+        </router-link>
+      </li>
+      <li class="pt-3 pb-3">
+        <router-link to="/login" class="text-dark-blue text-decoration-none">
+          <i class="fas fa-user"></i>
+          會員登入
+        </router-link>
+      </li>
+      <li class="pt-3 pb-3">
+        <router-link
+          to="/all-category/cart-orders"
+          class="text-dark-blue text-decoration-none"
+          :class="{'text-danger ':totalOrders>0}"
+        >
+          <i class="fas fa-shopping-cart"></i>
+          結帳去
+          <template v-if="totalOrders>0">({{totalOrders}})</template>
+        </router-link>
+      </li>
+    </ul>
+  </nav>
 </template>
 <style lang="scss" scoped>
 .fix-navbar {

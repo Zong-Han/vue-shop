@@ -3,9 +3,12 @@
     <loading :active.sync="isLoading" :can-cancel="true" :is-full-page="true"></loading>
     <section class="pt-md-5 pb-2 text-dark-blue">
       <div class="container">
-        <div class="product-info row justify-content-between align-items-center pt-5 pb-2">
-          <div class="product-head col-12 col-lg-5">
-            <img :src="product.imageUrl" class="imf-fluid product-img" alt="product-Image" />
+        <div class="product-info row justify-content-between pt-5 pb-2">
+          <div class="col-12 col-lg-5">
+            <div
+              class="product-img"
+              v-bind:style="{ 'background-image': 'url(' + product.imageUrl + ')' }"
+            ></div>
           </div>
           <div class="col-12 col-lg-7 pt-4 pb-3">
             <div class="product-body">
@@ -109,7 +112,7 @@
                     <li class="text-left text-light-red">總價{{product.price*num|currencyFilter}}</li>
                     <li>
                       <shopping-cart :product-id="product.id" :number="num">
-                        <span>加入購物車</span>
+                        <span class="p-1">加入購物車</span>
                       </shopping-cart>
                     </li>
                   </ul>
@@ -136,7 +139,7 @@
 
 <style lang="scss" scoped>
 .shopping-cart {
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: #ff6f61;
   color: white;
   &:hover {
@@ -148,24 +151,16 @@
 }
 
 .product-info {
-  .product-head {
-    position: relative;
-    &::before {
-      content: "";
-      display: block;
-      padding-top: 100%;
-    }
+  .product-img {
+    background-size: cover;
+    background-position: center ;
+    width: 100%;
+    height: 500px;
+  }
 
+  @media (min-width: 992px) {
     .product-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      max-width: 100%;
-      max-height: 100%;
+      height: 60%;
     }
   }
 
@@ -196,8 +191,8 @@
 </style>
 
 <script>
-import shoppingCart from '@/components/FrontEnd/ShoppingCartComponents/ShoppingCart'
-import subscribe from '@/components/FrontEnd/SubscribeComponents/Subscribe'
+import shoppingCart from '../ShoppingCartComponents/ShoppingCart'
+import subscribe from '../SubscribeComponents/Subscribe'
 export default {
   data () {
     return {

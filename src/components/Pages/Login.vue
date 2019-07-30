@@ -5,7 +5,7 @@
       <navbar></navbar>
     </header>
     <div class="main mt-5 pt-lg-5">
-      <div class="container ">
+      <div class="container">
         <div class="row justify-content-center align-items-center">
           <div class="col-10 col-lg-7 mb-3 mt-1">
             <banner></banner>
@@ -24,6 +24,7 @@
                 class="form-control mb-1 border-secondary"
                 placeholder="請輸入 Email 帳號"
                 v-model="user.username"
+                autocomplete
               />
               <p class="text-danger text-center mb-1">{{ errors.first('email') }}</p>
               <input
@@ -35,6 +36,7 @@
                 class="form-control mb-1 border-secondary"
                 placeholder="請輸入密碼"
                 v-model="user.password"
+                autocomplete
               />
               <p class="text-danger text-center">{{ errors.first('password') }}</p>
               <div class="checkbox mb-3">
@@ -58,9 +60,9 @@
 </template>
 
 <script>
-import navbar from '@/components/FrontEnd/NavComponents/Navbar'
-import banner from '@/components/FrontEnd/CategoryComponents/Banner'
-import footerInfo from '@/components/FrontEnd/FooterComponents/FooterInfo'
+import navbar from '../FrontEnd/NavComponents/Navbar'
+import banner from '../FrontEnd/CategoryComponents/Banner'
+import footerInfo from '../FrontEnd/FooterComponents/FooterInfo'
 export default {
   name: 'login',
   data () {
@@ -79,7 +81,7 @@ export default {
       const vm = this
       vm.isLoading = true
       const api = `${process.env.APIPATH}/admin/signin`
-      this.$http
+      vm.$http
         .post(api, {
           username: vm.user.username,
           password: vm.user.password

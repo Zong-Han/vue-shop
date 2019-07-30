@@ -1,16 +1,14 @@
 <template>
-  <div>
-    <h3 class="title-describe position-relative mb-4 pl-4 text-light-red">
-        <slot></slot>
-    </h3>
-  </div>
+  <h3 class="title-describe position-relative mb-4 pl-4 text-light-red">
+    <slot></slot>
+  </h3>
 </template>
 <style lang="scss" scoped>
 .title-describe {
   border-bottom: 1px solid #e8ddbf;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;

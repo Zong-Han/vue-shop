@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import product from '@/components/FrontEnd/CategoryComponents/Card'
-import titleDescribe from '@/components/FrontEnd/TitleComponents/TitleDescribe'
+import product from '../CategoryComponents/Card'
+import titleDescribe from '../TitleComponents/TitleDescribe'
 export default {
   data () {
     return {

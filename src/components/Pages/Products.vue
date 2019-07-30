@@ -31,10 +31,10 @@
           <td>{{product.price |currencyFilter}}</td>
           <td>
             <span v-if="product.is_enabled" class="text-success">啟用</span>
-            <span v-else class="text-success">未啟用</span>
+            <span v-else class="text-danger">未啟用</span>
           </td>
           <td v-if="product">
-            <button class="btn btn-outline-primary btn-sm mb-1" @click="openModel(product)">編輯</button>
+            <button class="btn btn-outline-primary btn-sm mb-1 mr-1" @click="openModel(product)">編輯</button>
             <button class="btn btn-outline-danger btn-sm mb-1" @click="deleteModel(product)">刪除</button>
           </td>
         </tr>
@@ -196,7 +196,6 @@
 
 <script>
 import $ from 'jquery'
-
 export default {
   data: function () {
     return {
@@ -254,7 +253,6 @@ export default {
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${this.newProduct.id}`
         vm.$http.put(api, { data: vm.newProduct }).then(response => {
           if (response.data.success) {
-            console.log(response.data.message)
             vm.getProducts()
           }
         })
@@ -264,7 +262,6 @@ export default {
         vm.$http.post(api, { data: vm.newProduct }).then(response => {
           if (response.data.success) {
             vm.isLoading = !vm.isLoading
-            console.log(response.data.message)
             vm.getProducts()
             vm.isLoading = !vm.isLoading
           }

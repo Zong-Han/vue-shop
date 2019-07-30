@@ -24,8 +24,8 @@
           </td>
           <td class="text-right">{{product.total |currencyFilter}}</td>
           <td>
-            <span v-if="product.is_paid">已付款</span>
-            <span v-else>未付款</span>
+            <span v-if="product.is_paid " class="text-success">已付款</span>
+            <span v-else class="text-danger">未付款</span>
           </td>
           <td v-if="product">
             <button class="btn btn-outline-primary btn-sm" @click="openModel(product)">編輯</button>
@@ -158,7 +158,7 @@ export default {
   methods: {
     getOrders: function () {
       const vm = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/orders`;
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/orders`
       vm.isLoading = !vm.isLoading
       this.$http.get(api).then(response => {
         console.log(response.data)
@@ -194,7 +194,7 @@ export default {
       const vm = this
       if (vm.newProduct.id) {
         // 更新
-        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${this.newProduct.id}`;
+        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${this.newProduct.id}`
         vm.$http.put(api, { data: vm.newProduct }).then(response => {
           if (response.data.success) {
             vm.getProducts()
@@ -202,7 +202,7 @@ export default {
         })
       } else {
         // 新增
-        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product`;
+        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product`
         vm.$http.post(api, { data: vm.newProduct }).then(response => {
           if (response.data.success) {
             vm.isLoading = !vm.isLoading

@@ -15,32 +15,32 @@
           <h2 class="sub-title mt-3">All the clothes you want</h2>
         </template>
       </jumbotron>
-      <category-card></category-card>
+      <categoryCard></categoryCard>
       <jumbotron>
         <template v-slot:jumbotron-img>
           <div class="jumbotron-subbg"></div>
         </template>
       </jumbotron>
-      <new-products></new-products>
-      <jumbotron-info></jumbotron-info>
-      <popular-card></popular-card>
+      <newProducts></newProducts>
+      <jumbotronInfo></jumbotronInfo>
+      <popularCard></popularCard>
       <subscribe></subscribe>
     </div>
     <footer>
-      <footer-info></footer-info>
+      <footerInfo></footerInfo>
     </footer>
   </div>
 </template>
 
 <script>
-import navbar from '@/components/FrontEnd/NavComponents/Navbar'
-import jumbotron from '@/components/FrontEnd/JumbotronComponents/Jumbotron'
-import jumbotronInfo from '@/components/FrontEnd/JumbotronComponents/JumbotronInfo'
-import categoryCard from '@/components/FrontEnd/CategoryComponents/categoryCard'
-import newProducts from '@/components/FrontEnd/NewProductComponents/NewProducts'
-import popularCard from '@/components/FrontEnd/PopularComponents/PopularCard'
-import subscribe from '@/components/FrontEnd/SubscribeComponents/Subscribe'
-import footerInfo from '@/components/FrontEnd/FooterComponents/FooterInfo'
+import navbar from '../FrontEnd/NavComponents/Navbar'
+import jumbotron from '../FrontEnd/JumbotronComponents/Jumbotron'
+import categoryCard from '../FrontEnd/CategoryComponents/CategoryCard'
+import newProducts from '../FrontEnd/NewProductComponents/NewProducts'
+import jumbotronInfo from '../FrontEnd/JumbotronComponents/JumbotronInfo'
+import popularCard from '../FrontEnd/PopularComponents/PopularCard'
+import subscribe from '../FrontEnd/SubscribeComponents/Subscribe'
+import footerInfo from '../FrontEnd/FooterComponents/FooterInfo'
 
 export default {
   name: 'index',
@@ -55,8 +55,8 @@ export default {
     jumbotron,
     categoryCard,
     newProducts,
-    popularCard,
     jumbotronInfo,
+    popularCard,
     subscribe,
     footerInfo
   }

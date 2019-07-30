@@ -56,9 +56,9 @@
         </ul>
         <form class="card p-2">
           <div class="input-group">
-            <input v-model="couponCode" type="text" class="form-control" placeholder="請輸入優惠碼" />
+            <input v-model.trim="couponCode" type="text" class="form-control" placeholder="請輸入優惠碼" />
             <div class="input-group-append">
-              <button @click="sendCouponCode" class="btn btn-submit">套用優惠碼</button>
+              <button @click.prevent="sendCouponCode" class="btn btn-submit">套用優惠碼</button>
             </div>
           </div>
         </form>
@@ -254,7 +254,7 @@
         <div class="text-right mr-2">
           <button v-if="carts.total>0" class="btn btn-submit" type="submit" @click="checkout">
             <i class="fas fa-shopping-cart"></i>
-            結帳去
+            送出訂單
           </button>
         </div>
       </div>
@@ -321,8 +321,8 @@ export default {
     },
     sendCouponCode () {
       const vm = this
-      vm.isLoading = true
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`
+      vm.isLoading = true
       vm.$http.post(api, { data: { code: vm.couponCode } }).then(res => {
         if (res.data.success) {
           this.getCartOrders()

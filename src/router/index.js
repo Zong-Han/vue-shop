@@ -6,7 +6,7 @@ import Products from '@/components/Pages/Products'
 import Orders from '@/components/Pages/Orders'
 import Coupon from '@/components/Pages/Coupon'
 import PayOrder from '@/components/Pages/PayOrder'
-import Index from '@/components/Pages/Index'
+import Home from '@/components/Pages/Home'
 import Category from '@/components/Pages/Category'
 import AllCategory from '@/components/FrontEnd/CategoryComponents/AllCategory'
 import ProductInfo from '@/components/FrontEnd/CategoryComponents/ProductInfo'
@@ -18,8 +18,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: Index
+      name: 'home',
+      component: Home
     },
     {
       path: '/all-category',

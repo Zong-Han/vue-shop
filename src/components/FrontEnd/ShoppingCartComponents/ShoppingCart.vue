@@ -2,12 +2,12 @@
   <!-- Vue native DOM use native  -->
   <a
     href="#"
-    class="shopping-cart text-dark-blue text-decoration-none d-block"
+    class="shopping-cart text-dark-blue text-decoration-none d-block text-nowrap"
     @click.prevent="addToCart"
   >
     <loading :active.sync="isLoading" :can-cancel="true" :is-full-page="true"></loading>
     <slot></slot>
-    <i class="fas fa-shopping-cart"></i>
+    <i class="fas fa-shopping-cart p-1"></i>
   </a>
 </template>
 

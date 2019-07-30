@@ -27,10 +27,10 @@
           <td class="text-center">{{coupon.due_date}}</td>
           <td>
             <span v-if="coupon.is_enabled" class="text-success">啟用</span>
-            <span v-else class="text-success">未啟用</span>
+            <span v-else class="text-danger">未啟用</span>
           </td>
           <td v-if="coupon">
-            <button class="btn btn-outline-primary btn-sm" @click="openCoupon(coupon)">編輯</button>
+            <button class="btn btn-outline-primary btn-sm mr-1" @click="openCoupon(coupon)">編輯</button>
             <button class="btn btn-outline-danger btn-sm" @click="deleteCoupon(coupon)">刪除</button>
           </td>
         </tr>
@@ -151,7 +151,6 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupons?page=${this.pageItem.current_page}`
       vm.isLoading = !vm.isLoading
       this.$http.get(api).then(response => {
-        console.log(response.data)
         this.pageItem = response.data.pagination
         this.coupons = response.data.coupons
         vm.isLoading = !vm.isLoading
@@ -179,7 +178,6 @@ export default {
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${this.newCoupon.id}`
         vm.$http.put(api, { data: vm.newCoupon }).then(response => {
           if (response.data.success) {
-            console.log(response.data.message)
             vm.getCoupon()
           }
         })
@@ -189,7 +187,6 @@ export default {
         vm.$http.post(api, { data: vm.newCoupon }).then(response => {
           if (response.data.success) {
             vm.isLoading = !vm.isLoading
-            console.log(response.data.message)
             vm.getCoupon()
             vm.isLoading = !vm.isLoading
           }
@@ -202,7 +199,6 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${coupon.id}`
       vm.$http.delete(api).then(response => {
         if (response.data.success) {
-          console.log(response.data.message)
           vm.isLoading = !vm.isLoading
           vm.getCoupon()
           vm.isLoading = !vm.isLoading

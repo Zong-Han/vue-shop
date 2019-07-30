@@ -2,12 +2,10 @@
   <section class="category pt-3 pt-md-5 pb-5" id="category">
     <div class="container">
       <title-describe>CATEGORY</title-describe>
-      <div
-        class="category-info d-flex flex-lg-row justify-content-center align-items-center text-center text-soft-cyan"
-      >
-        <p class="mr-lg-3">LOVE YOURSELF NOW</p>
-        <p class="text-light-red ml-2 mr-lg-3">ON SALE</p>
-      </div>
+      <p class="category-info text-soft-cyan mr-lg-3 text-nowrap text-center">
+        LOVE YOURSELF NOW
+        <span>ON SALE</span>
+      </p>
       <div class="row justify-content-center">
         <div class="col-12 col-md-5">
           <div class="category-card h-5 position-relative mb-2">
@@ -55,8 +53,8 @@
 </template>
 
 <script>
-import titleDescribe from '@/components/FrontEnd/TitleComponents/TitleDescribe'
-import $ from 'jquery'
+import titleDescribe from '../TitleComponents/TitleDescribe'
+
 export default {
   data () {
     return {}

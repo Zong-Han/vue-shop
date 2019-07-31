@@ -4,17 +4,17 @@
     <section class="pt-md-5 pb-2 text-dark-blue">
       <div class="container">
         <div class="product-info row justify-content-between pt-5 pb-2">
-          <div class="col-12 col-lg-5">
+          <div class="col-lg-5">
             <div
               class="product-img"
               v-bind:style="{ 'background-image': 'url(' + product.imageUrl + ')' }"
             ></div>
           </div>
-          <div class="col-12 col-lg-7 pt-4 pb-3">
+          <div class="col-lg-7 pt-4 pb-3">
             <div class="product-body">
               <i class="fas fa-thumbtack fa-1x text-secondary"></i>
               <div class="row content">
-                <div class="col-12 mb-2">
+                <div class="mb-2">
                   <ul class="list-unstyled">
                     <li class="product-title mb-3 text-light-red">
                       <h2 class="font-weight-bold">{{product.title}}</h2>

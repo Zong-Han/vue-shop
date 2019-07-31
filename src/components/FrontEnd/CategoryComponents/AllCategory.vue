@@ -1,14 +1,14 @@
 <template>
-  <div class="container">
+  <div class="container py-1 py-md-5">
     <loading :active.sync="isLoading" :can-cancel="true" :is-full-page="true"></loading>
-    <div class="row py-1 py-md-5">
-      <div class="col-12 mb-3">
+    <div class="row">
+      <div class="col-12 mb-3 ">
         <banner></banner>
       </div>
-      <div class="col-12 col-md-3 mb-5">
+      <div class="col-md-3">
         <sidebar :re-select="reSelect"></sidebar>
       </div>
-      <div class="col-12 col-md-9">
+      <div class="col-md-9">
         <template v-if="filterPrice.length>0">
           <div class="row justify-content-center justify-content-lg-start">
             <div class="col-10 col-md-6 col-lg-4" v-for="item in filterPrice" :key="item.id">
@@ -17,7 +17,7 @@
           </div>
         </template>
         <template v-else>
-          <h3 class="col-12 text-muted text-center">抱歉，價格區間內沒有合適的商品喔 !</h3>
+          <h3 class="text-muted text-center">抱歉，價格區間內沒有合適的商品喔 !</h3>
         </template>
       </div>
     </div>

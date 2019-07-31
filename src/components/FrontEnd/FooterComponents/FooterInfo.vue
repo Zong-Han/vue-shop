@@ -2,7 +2,7 @@
   <div class="container-fluid text-center footer-info bg-dark text-white pt-1 pb-1">
     <p class="mb-1">歡迎您來更瞭解我</p>
     <div class="row pt-1 pb-1 flex-column flex-md-row justify-content-center">
-      <div class="col-12 col-md-4 pt-1 pb-1">
+      <div class="col-md-3 pt-1 pb-1">
         <a
           class="text-white text-decoration-none"
           href="https://github.com/Zong-Han"
@@ -12,7 +12,7 @@
           GitHub
         </a>
       </div>
-      <div class="col-12 col-md-4 pt-1 pb-1">
+      <div class="col-md-3 pt-1 pb-1">
         <a
           class="text-white text-decoration-none"
           href="https://medium.com/%E4%B8%80%E9%BB%9E%E4%B8%80%E9%BB%9E%E8%AE%8A%E7%B0%A1%E5%96%AE"
@@ -22,7 +22,7 @@
           Medium
         </a>
       </div>
-      <div class="col-12 col-md-4 pt-1 pb-1">
+      <div class="col-md-3 pt-1 pb-1">
         <a
           class="text-white text-decoration-none"
           href="https://codesandbox.io/u/Zong-Han/sandboxes"

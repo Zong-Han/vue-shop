@@ -3,7 +3,7 @@
     <div class="container pt-5 pb-5">
       <h3 class="mb-5 text-dark-blue text-capitalize">Subscribe to our Newsletter</h3>
       <div class="row align-items-center justify-content-center">
-        <div class="evaluation col-12 col-lg-8 border background-white pb-1 mb-3">
+        <div class="evaluation col-lg-8 border background-white pb-1 mb-3">
           <div
             class="media align-items-center mb-2 border-bottom"
             v-for="(item,index) in user"
@@ -19,7 +19,7 @@
             <p class="pr-1 mb-1 align-self-end">{{item.name.first}}</p>
           </div>
         </div>
-        <div class="col-12 col-lg-8 mt-3">
+        <div class="col-lg-8 mt-3">
           <div class="input-group mb-3">
             <input
               v-validate="'email'"

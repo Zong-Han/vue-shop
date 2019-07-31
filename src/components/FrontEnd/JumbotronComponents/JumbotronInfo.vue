@@ -2,7 +2,7 @@
   <section id="company" class="bg-light">
     <div class="container">
       <div class="row no-gutters justify-content-center">
-        <div class="col-12 col-md-7 py-3 py-md-5 text-dark-blue">
+        <div class="col-md-7 py-3 py-md-5 text-dark-blue">
           <h3 class="company-about text-capitalize text-center ">about me</h3>
           <ul class="company-info list-unstyled p-3 d-flex flex-wrap justify-content-center">
             <li class="col-6 mb-1 text-center">

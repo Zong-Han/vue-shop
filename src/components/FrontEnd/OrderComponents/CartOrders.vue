@@ -4,10 +4,11 @@
     <div class="row text-dark-blue mt-5">
       <div class="col-12 mb-4">
         <div class="d-flex flex-column align-items-center mb-3">
-          <span class="mb-1" v-if="carts.carts">
+          <span class="mb-1" v-if="carts.carts.length>0">
             您的購物車內有
             <span class="text-light-red">{{carts.carts.length}}</span> 筆訂單
           </span>
+          <h2 v-else class="text-light-red">您的購物車內目前沒有任何訂單喔!</h2>
           <span class="mb-1 text-light-red" v-if="carts.total>=1000">您以符合周年慶滿千折百活動</span>
           <span class="mb-1" v-if="carts.total>=1000">輸入優惠碼 greentea 即可享有九折優惠</span>
         </div>
@@ -17,10 +18,10 @@
             :key="item.id"
             class="list-group-item d-flex no-gutters flex-wrap align-items-center p-1 mb-2"
           >
-            <div class="col-12 col-md-3">
+            <div class="col-md-3">
               <img :src="item.product.imageUrl" class="product-icon" alt="product-icon" />
             </div>
-            <div class="col-12 col-md-4 p-1 text-center mb-2">
+            <div class="col-md-4 p-1 text-center mb-2">
               <h5 class="mt-1">{{item.product.title}}</h5>
               <small>{{item.product.description}}</small>
             </div>
@@ -63,7 +64,7 @@
           </div>
         </form>
       </div>
-      <div class="col-12 mb-5">
+      <div class="mb-5">
         <h4 class="mb-3">訂單資訊</h4>
         <div class="row text-left">
           <div class="col-md-6 mb-3">
@@ -71,7 +72,7 @@
             <input
               v-model="form.user.name"
               v-validate="'required'"
-              data-vv-as="姓名欄"
+              data-vv-as="姓名"
               id="CustomerName"
               name="CustomerName"
               type="text"
@@ -86,7 +87,7 @@
             <input
               v-model="form.user.tel"
               v-validate="'required|numeric'"
-              data-vv-as="電話欄"
+              data-vv-as="電話"
               id="tel"
               name="tel"
               type="text"
@@ -252,7 +253,12 @@
         </div>
         <hr class="mb-3" />
         <div class="text-right mr-2">
-          <button v-if="carts.total>0" class="btn btn-submit" type="submit" @click="checkout">
+          <button
+            :class="{'disabled':carts.total===0}"
+            class="btn btn-primary"
+            type="submit"
+            @click.prevent="checkout"
+          >
             <i class="fas fa-shopping-cart"></i>
             送出訂單
           </button>
@@ -278,7 +284,7 @@
 export default {
   data () {
     return {
-      carts: [],
+      carts: { carts: [] },
       couponCode: '',
       paymentMethod: '',
       isLoading: false,

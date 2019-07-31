@@ -7,7 +7,7 @@
         <span>ON SALE</span>
       </p>
       <div class="row justify-content-center">
-        <div class="col-12 col-md-5">
+        <div class="col-md-5">
           <div class="category-card h-5 position-relative mb-2">
             <div class="card-clothes"></div>
             <router-link
@@ -16,9 +16,9 @@
             >CLOTHES</router-link>
           </div>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-md-6">
           <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-md-6">
               <div class="category-card position-relative h-2 mb-2">
                 <div class="card-shoes"></div>
                 <router-link
@@ -27,7 +27,7 @@
                 >SHOES</router-link>
               </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-md-6">
               <div class="category-card position-relative h-2 mb-2">
                 <div class="card-skirt"></div>
                 <router-link
@@ -36,7 +36,7 @@
                 >SKIRT</router-link>
               </div>
             </div>
-            <div class="col-12 col-md-12">
+            <div class="col-md-12">
               <div class="category-card position-relative h-2">
                 <div class="card-bag"></div>
                 <router-link

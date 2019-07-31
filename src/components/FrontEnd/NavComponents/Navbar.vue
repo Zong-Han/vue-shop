@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar fix-navbar">
+  <nav class="navbar fix-navbar shadow-sm">
     <router-link to="/" exact class="font-weight-bold d-lg-none text-dark text-decoration-none">
       <i class="fas fa-home"></i>
       衣美診所
@@ -100,7 +100,7 @@
   right: 0;
   background-color: white;
   z-index: 1030;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  // box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 
   .shop-nav {
     position: absolute;

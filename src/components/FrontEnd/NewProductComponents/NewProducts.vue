@@ -4,7 +4,7 @@
     <div class="container">
       <titleDescribe>NEW PRODUSTS</titleDescribe>
       <div class="row justify-content-center align-items-center">
-        <div class="col-12 col-lg-7">
+        <div class="col-lg-7">
           <div class="row justify-content-center">
             <div
               class="col-10 col-md-6 mb-2 overflow-hidden"
@@ -23,7 +23,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-5 mt-3 text-center">
+        <div class="col-lg-5 mt-3 text-center">
           <div class="new-product-info text-dark-blue">
             <p>我們秉持著獨一無二的精神</p>
             <p>為妳挑選出最適合妳的夏季裝扮</p>

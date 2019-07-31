@@ -46,7 +46,7 @@
               </div>
               <div class="text-right">
                 <button class="btn btn-md btn-submit btn-inline-block mr-2">註冊</button>
-                <button class="btn btn-md btn-dark btn-inline-block" type="submit">登入</button>
+                <button class="btn btn-md btn-primary btn-inline-block" type="submit">登入</button>
               </div>
             </form>
           </div>

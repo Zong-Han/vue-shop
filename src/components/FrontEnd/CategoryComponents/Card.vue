@@ -1,8 +1,8 @@
 <template>
-  <div class="popular-card mb-3">
+  <div class="popular-card shadow-sm mb-3">
     <div class="popular-card-header w-100 mb-1">
-      <router-link class="d-block" :to="{name:'productInfo',params: { id: product.id }}">
-        <img class="popular-card-img" :src="product.imageUrl" alt="Popular-Image" />
+      <router-link class="d-block h-100" :to="{name:'productInfo',params: { id: product.id }}">
+        <div class="popular-card-img" :style="{'background-image':'url('+product.imageUrl+')'}"></div>
       </router-link>
     </div>
     <div class="popular-card-body p-3 text-dark-blue">
@@ -42,25 +42,16 @@ export default {
 
 <style lang="scss" scoped>
 .popular-card {
-  box-shadow: 0.125rem 0.25rem 0.25rem #e2e2e2;
 
   .popular-card-header {
     position: relative;
     overflow: hidden;
+    height: 250px;
 
-    &:before {
-      content: "";
-      display: block;
-      padding-top: 80%;
-    }
     .popular-card-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      background-size: cover;
+      background-position: center;
       width: 100%;
-      max-width: 100%;
       height: 100%;
       max-height: 100%;
       transform: scale(1, 1);
